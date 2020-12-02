@@ -21,19 +21,24 @@ module.exports = async (req, res) => {
 
     const user = await User.findOne({ emailAddress })
 
+    if (user == null) {
+      return res.status(404).json({
+        status: "error",
+        message: "email not registered",
+      })
+    }
     const isPasswordMatch = await bcrypt.compare(password, user.password)
     if (!isPasswordMatch) {
       return res.status(404).json({
         status: "error",
-        message: "user and password wrong",
+        message: "email and password wrong",
       })
     }
 
-    console.log("masokkkk", isPasswordMatch)
     res.json({
       status: "success",
       data: {
-        _id: user._id,
+        id: user._id,
         userName: user.userName,
         emailAddress: user.emailAddress,
         accountNumber: user.accountNumber,

@@ -1,7 +1,6 @@
 const User = require("../models/User")
 const Validator = require("fastest-validator")
 const v = new Validator()
-const shortid = require("shortid")
 
 module.exports = async (req, res) => {
   try {
@@ -37,6 +36,7 @@ module.exports = async (req, res) => {
       },
     })
   } catch (err) {
+    console.log("errr", err.message)
     return res.status(409).json({
       status: "error",
       message: err.message,
