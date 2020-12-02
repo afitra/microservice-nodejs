@@ -1,9 +1,6 @@
-var express = require('express');
-var router = express.Router();
+var express = require("express")
+var router = express.Router()
+const handlerDelete = require("../handler/user")
+router.delete("/delete/:id", handlerDelete.deleteUser)
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
+module.exports = router

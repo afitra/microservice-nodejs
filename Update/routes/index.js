@@ -1,6 +1,6 @@
 var express = require("express")
 var router = express.Router()
-const handler = require("../handler/user")
-router.post("/register", handler)
+const handlerUpdate = require("../handler/user")
+router.put("/update", handlerUpdate)
 
 module.exports = router

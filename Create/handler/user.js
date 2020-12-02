@@ -1,14 +1,13 @@
 const User = require("../models/User")
 const Validator = require("fastest-validator")
 const v = new Validator()
-
+const shortid = require("shortid")
 module.exports = async (req, res) => {
   try {
     const schema = {
       userName: "string|empty:false",
-      //   accountNumber: "string|empty:false",
       emailAddress: "email|empty:false",
-      //   identityNumber: "string|empty:false",
+
       password: "string|min:6",
     }
 
@@ -20,13 +19,15 @@ module.exports = async (req, res) => {
         message: validate,
       })
     }
-    const { userName, emailAddress, password } = req.body
+    const { userName, emailAddress, password, role } = req.body
 
     const createdUser = await User.create({
       userName,
-
+      accountNumber: shortid.generate(),
+      identityNumber: shortid.generate(),
       emailAddress,
       password,
+      role,
     })
 
     res.json({
