@@ -1,0 +1,5 @@
+create : 4001
+read : 4002
+update : 4003
+delete : 4004
+login : 4005
