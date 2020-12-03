@@ -48,7 +48,7 @@ module.exports = {
 
     try {
       const user = await api.post("/user/register", req.body)
-
+      client.del(REDIS_KEY)
       return res.json(user.data)
     } catch (err) {
       if (err.response.data.message && err.response.status) {
