@@ -9,7 +9,7 @@ module.exports = {
       let users = await User.find({ role: "user" })
 
       return res.json({
-        status: "success",
+        status: "successd",
         data: users,
       })
     } catch (err) {

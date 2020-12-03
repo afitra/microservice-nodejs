@@ -172,6 +172,7 @@ module.exports = {
   allUser: (req, res) => {
     client.get(REDIS_KEY, (err, data) => {
       if (data) {
+        console.log(">>>>", data)
         return res.json({
           status: "success",
           is_cached: true,
@@ -183,6 +184,7 @@ module.exports = {
             headers: { authorization: req.headers.authorization },
           })
           .then((user) => {
+            console.log("<<<<<", user)
             client.set(
               REDIS_KEY,
               JSON.stringify(user.data.data),

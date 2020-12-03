@@ -5,7 +5,7 @@ when you use mongoDB local set env "ONLINE" with false
 if you use mongoDB online/cloud   set env "ONLINE" with true
 
 ======================================================== 1
-endpoint : /user/register
+endpoint : http://tes.apitoong.com:4000/user/register
 method :post
 request :
             body : userName (required)
@@ -25,7 +25,7 @@ example response
  
 ======================================================== 2
 
-endpoint : /user/login
+endpoint : http://tes.apitoong.com:4000/user/login
 method :post
 request :
         body : emailAddress (required)
@@ -43,7 +43,7 @@ example response
 
 ======================================================== 3
 
-endpoint : /user/account-number
+endpoint : http://tes.apitoong.com:4000/user/account-number
 method : GET
 request:
         header : {authorization : token}  (required )
@@ -66,7 +66,7 @@ example response
 ======================================================== 4
 
 
-endpoint : /user/identity-number/:identityNumber
+endpoint : http://tes.apitoong.com:4000/user/identity-number/:identityNumber
 method : GET
 request:
         params: {identityNumber : identityNumber}  (required )
@@ -90,7 +90,7 @@ example response
 ======================================================== 5
 
 
-endpoint : /user/search?userName=abu
+endpoint : http://tes.apitoong.com:4000/user/search?userName=abu
 method : GET
 request:
         query: {userName : userName} (required)
@@ -114,7 +114,7 @@ example response
 ======================================================== 6
 
 
-endpoint : /user/all
+endpoint : http://tes.apitoong.com:4000/user/all
 method : GET
 request:
         header : {authorization : token} (required)
@@ -155,7 +155,7 @@ respon for where use redis for cache
 
 ======================================================== 7 
 for admin
-endpoint :/user/delete/:id
+endpoint :http://tes.apitoong.com:4000/user/delete/:id
 method : delete
 request:
         params : {id}
@@ -172,7 +172,7 @@ example response
 ======================================================== 8
 
 
-endpoint : /user/update
+endpoint : http://tes.apitoong.com:4000/user/update
 method :put
 requeest :
             body : userName (required)
