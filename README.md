@@ -3,18 +3,28 @@ add .env with same key and value on all server
 when you use mongoDB local set env "ONLINE" with false
 if you use mongoDB online/cloud set env "ONLINE" with true
 
-======================================================== 1 \n
+======================================================== 1
+
 endpoint : http://tes.apitoong.com:4000/user/register
+
 method :post
+
 request :
+
 body : userName (required)
+
 emailAddress (required)
+
 password (required min=6 character)
+
 role (optional for create admin)
 
 response
+
 type : object
+
 example response
+
 {
 "status": "success",
 "data": {
@@ -25,14 +35,21 @@ example response
 ======================================================== 2
 
 endpoint : http://tes.apitoong.com:4000/user/login
+
 method :post
+
 request :
+
 body : emailAddress (required)
+
 password (required )
 
 response
+
 type : object
+
 example response
+
 {
 "status": "success",
 "data": {
@@ -43,13 +60,21 @@ example response
 ======================================================== 3
 
 endpoint : http://tes.apitoong.com:4000/user/account-number
+
 method : GET
+
 request:
+
 header : {authorization : token} (required )
+
 body : accountNumber (required )
+
 response
+
 type : object
+
 example response
+
 {
 "status": "success",
 "data": {
@@ -65,14 +90,23 @@ example response
 ======================================================== 4
 
 endpoint : http://tes.apitoong.com:4000/user/identity-number/:identityNumber
+
 method : GET
+
 request:
+
 params: {identityNumber : identityNumber} (required )
+
 header : {authorization : token} (required )
+
 body : identityNumber (required )
+
 response
+
 type : object
+
 example response
+
 {
 "status": "success",
 "data": {
@@ -88,14 +122,21 @@ example response
 ======================================================== 5
 
 endpoint : http://tes.apitoong.com:4000/user/search?userName=abu
+
 method : GET
+
 request:
+
 query: {userName : userName} (required)
+
 header : {authorization : token} (required)
 
 response
+
 type : object
+
 example response
+
 {
 "status": "success",
 "data": {
@@ -111,13 +152,19 @@ example response
 ======================================================== 6
 
 endpoint : http://tes.apitoong.com:4000/user/all
+
 method : GET
+
 request:
+
 header : {authorization : token} (required)
 
 response
+
 type : object
+
 example response
+
 {
 "status": "success","
 "data":[ {
@@ -150,16 +197,25 @@ respon for where use redis for cache
 }
 
 ======================================================== 7
+
 for admin
+
 endpoint :http://tes.apitoong.com:4000/user/delete/:id
+
 method : delete
+
 request:
+
 params : {id}
+
 header : {authorization : token} (required admin token )
 
 response
+
 type : object
+
 example response
+
 {
 "status": "success",
 "message": "deleted successfully!"
@@ -168,16 +224,27 @@ example response
 ======================================================== 8
 
 endpoint : http://tes.apitoong.com:4000/user/update
+
 method :put
+
 requeest :
+
 body : userName (required)
+
 emailAddress (required)
+
 password (required min=6 character)
+
 id (required personal id)
+
 header : {authorization : token} (required personal token )
+
 response
+
 type : object
+
 example response
+
 {
 "status": "success",
 "data": {
