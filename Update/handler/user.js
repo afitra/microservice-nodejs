@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
       emailAddress: "email|empty:false",
       password: "string|min:6",
     }
-    console.log(req.body)
+
     const validate = v.validate(req.body, schema)
 
     if (validate.length) {
@@ -28,7 +28,6 @@ module.exports = async (req, res) => {
 
     let user = await User.findOne({ _id: encodeToken })
 
-    console.log(user)
     if (user.id != id) {
       return res.status(400).json({
         status: "error",
