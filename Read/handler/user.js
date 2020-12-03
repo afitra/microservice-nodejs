@@ -138,10 +138,22 @@ module.exports = {
 
       let data = await User.findOne({ userName })
 
+      if (data == null) {
+        return res.status(400).json({
+          status: "error",
+          message: "no user with this user name",
+        })
+      }
+
       res.json({
         status: "success",
         data: data,
       })
-    } catch (err) {}
+    } catch (err) {
+      return res.status(409).json({
+        status: "error",
+        message: err.message,
+      })
+    }
   },
 }
