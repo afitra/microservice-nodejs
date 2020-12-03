@@ -18,9 +18,9 @@ module.exports = {
         message: validate,
       })
     }
-    console.log("<<<<", id)
+
     let data = await User.findById(id)
-    console.log("ini data", data)
+
     if (data == null) {
       return res.status(400).json({
         status: "error",
@@ -83,9 +83,9 @@ module.exports = {
           message: validate,
         })
       }
-      console.log(">>>>>", userName)
+
       let data = await User.findOne({ userName })
-      console.log(data)
+
       res.json({
         status: "success",
         data: data,

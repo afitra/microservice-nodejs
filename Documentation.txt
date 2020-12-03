@@ -1,10 +1,16 @@
+
+add .env with same key and  value on all server
+
+
+
 ======================================================== 1
 endpoint : /user/register
 method :post
-body : userName (required)
-       emailAddress (required)
-       password (required min=6 character)
-       role (optional for create admin)
+request :
+            body : userName (required)
+                   emailAddress (required)
+                   password (required min=6 character)
+                   role (optional for create admin)
 
 response 
 type : object
@@ -20,8 +26,9 @@ example response
 
 endpoint : /user/login
 method :post
-body : emailAddress (required)
-       password (required )
+request :
+        body : emailAddress (required)
+               password (required )
 
 response 
 type : object
@@ -115,7 +122,7 @@ response
 type : object
 example response
 {
-    "status": "success",
+    "status": "success","
     "data":[ {
         "id": "5fc758587f085f8cd416559d",
         "emailAddress": "abu@mail.com",
@@ -126,13 +133,32 @@ example response
     }]
 }
 
+respon for where use redis for cache
+
+{
+    "status": "success",
+    "is_cached": true,
+    "data": [
+        {
+            "accountNumber": "i1f7utF9F",
+            "identityNumber": "d1LmIzXsk5",
+            "role": "user",
+            "_id": "5fc7c48cbd7f1f1eff60e293",
+            "userName": "budi",
+            "emailAddress": "budi@mail.com",
+            "password": "$2a$08$mC/ZjHtjP8/SlBUVj0SXieFURifHIiy/nTWSG.TTvCUSHSw3nWFuO",
+            "__v": 0
+        }
+    ]
+}
+
 ======================================================== 7 
 for admin
 endpoint :/user/delete/:id
 method : delete
 request:
         params : {id}
-        header : {authorization : token} (required )
+        header : {authorization : token} (required admin token )
    
 response 
 type : object
@@ -147,11 +173,12 @@ example response
 
 endpoint : /user/update
 method :put
-body : userName (required)
-       emailAddress (required)
-       password (required min=6 character)
-       id (required personal id)
-
+requeest :
+            body : userName (required)
+                    emailAddress (required)
+                    password (required min=6 character)
+                    id (required personal id)
+            header : {authorization : token} (required personal token )
 response 
 type : object
 example response

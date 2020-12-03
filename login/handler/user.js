@@ -3,13 +3,12 @@ const User = require("../models/User"),
   v = new Validator(),
   bcrypt = require("bcryptjs")
 module.exports = async (req, res) => {
-  console.log("qwqwq")
   try {
     const schema = {
       emailAddress: "email|empty:false",
       password: "string|min:6",
     }
-    console.log("okok")
+
     const validate = v.validate(req.body, schema)
 
     if (validate.length) {
@@ -19,9 +18,9 @@ module.exports = async (req, res) => {
       })
     }
     const { emailAddress, password } = req.body
-    console.log("111111")
+
     const user = await User.findOne({ emailAddress })
-    console.log("2222")
+
     if (user == null) {
       return res.status(404).json({
         status: "error",

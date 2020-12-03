@@ -9,8 +9,11 @@ const {
   JWT_SECRET,
   JWT_ACCESS_TOKEN_EXPIRED,
   REDIS_KEY,
+  REDIS_LIMIT,
 } = process.env
 const { setCache, getCache } = require("../helpers/redisHelper")
+const redis = require("redis")
+const client = redis.createClient()
 module.exports = {
   loginUser: async (req, res) => {
     const api = await apiAdapter(URL_SERVICE_LOGIN)
@@ -107,7 +110,7 @@ module.exports = {
           data: req.body,
         }
       )
-      console.log(user)
+
       return res.json({
         status: "success",
         data: {
@@ -166,55 +169,55 @@ module.exports = {
       }
     }
   },
-  allUser: async (req, res) => {
-    try {
-      // var set = await setCache("sdsd", "ini jaman sd")
-      // console.log("tahabp satuuuuu")
-      // client.get("sdsd").then((data) => {
-      //   console.log(">>>>>", data)
-      // })
-      // console.log(temp)
-      // if (temp) {
-      //   return res.json({
-      //     status: "success",
-      //     data: temp,
-      //   })
-      // }
-
-      console.log("lanjut   >>>>   ", temp)
-      const api = await apiAdapter(URL_SERVICE_READ)
-      console.log("Ooko")
-      const user = await api.get(`/user/all`, {
-        headers: { authorization: req.headers.authorization },
-      })
-      console.log(user.data.data)
-      return res.json({
-        status: "success",
-        data: user.data.data,
-      })
-    } catch (err) {
-      if (err.response.data.message && err.response.status) {
-        return res.status(err.response.status).json({
-          status: "error",
-          message: err.response.data.message,
+  allUser: (req, res) => {
+    client.get(REDIS_KEY, (err, data) => {
+      if (data) {
+        return res.json({
+          status: "success",
+          is_cached: true,
+          data: JSON.parse(data),
         })
       } else {
-        return res.status(409).json({
-          status: "error",
-          message: err.message,
-        })
+        apiAdapter(URL_SERVICE_READ)
+          .get(`/user/all`, {
+            headers: { authorization: req.headers.authorization },
+          })
+          .then((user) => {
+            client.set(
+              REDIS_KEY,
+              JSON.stringify(user.data.data),
+              "EX",
+              Number(REDIS_LIMIT)
+            )
+            return res.json({
+              status: "success",
+              data: user.data.data,
+            })
+          })
+          .catch((err) => {
+            if (err.response.data.message && err.response.status) {
+              return res.status(err.response.status).json({
+                status: "error",
+                message: err.response.data.message,
+              })
+            } else {
+              return res.status(409).json({
+                status: "error",
+                message: err.message,
+              })
+            }
+          })
       }
-    }
+    })
   },
   updateUser: async (req, res) => {
     const api = await apiAdapter(URL_SERVICE_UPDATE)
 
     try {
-      console.log("masokk gateway")
       const user = await api.put("/user/update", req.body, {
         headers: { authorization: req.headers.authorization },
       })
-      console.log(user.data)
+
       return res.json({
         status: "success",
         data: {
@@ -239,12 +242,11 @@ module.exports = {
   },
   deleteUser: async (req, res) => {
     try {
-      console.log("masokk delete gateway", req.params.id)
       const api = await apiAdapter(URL_SERVICE_DELETE)
       const user = await api.delete(`/user/delete/${req.params.id}`, {
         headers: { authorization: req.headers.authorization },
       })
-      console.log(user.data)
+
       return res.json({
         status: "success",
         message: user.data.message,

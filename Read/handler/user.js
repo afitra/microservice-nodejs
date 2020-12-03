@@ -5,10 +5,9 @@ const { JWT_SECRET } = process.env
 const jwt = require("jsonwebtoken")
 module.exports = {
   allUser: async (req, res) => {
-    console.log("masukk alll")
     try {
       let users = await User.find({ role: "user" })
-      console.log(users)
+
       return res.json({
         status: "success",
         data: users,
@@ -136,9 +135,9 @@ module.exports = {
           message: validate,
         })
       }
-      console.log(">>>>>", userName)
+
       let data = await User.findOne({ userName })
-      console.log(data)
+
       res.json({
         status: "success",
         data: data,

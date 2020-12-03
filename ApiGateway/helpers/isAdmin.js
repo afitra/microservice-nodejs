@@ -7,7 +7,6 @@ module.exports = async (req, res, next) => {
     const token = req.headers.authorization
     var id = await jwt.verify(token, JWT_SECRET).id
 
-    console.log("ini validate  ", id)
     const api = await apiAdapter(URL_SERVICE_READ)
 
     const user = await api.get(`/user/${id}`, {
