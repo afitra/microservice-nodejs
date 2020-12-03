@@ -3,7 +3,7 @@ add .env with same key and value on all server
 when you use mongoDB local set env "ONLINE" with false
 if you use mongoDB online/cloud set env "ONLINE" with true
 
-======================================================== 1
+======================================================== 1 \n
 endpoint : http://tes.apitoong.com:4000/user/register
 method :post
 request :
