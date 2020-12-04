@@ -3,9 +3,11 @@ add .env with same key and value on all server
 when you use mongoDB local set env "ONLINE" with false
 if you use mongoDB online/cloud set env "ONLINE" with true
 
+use base url http://tes.apitoong.com:4000 on server
+
 ======================================================== 1
 
-endpoint : http://tes.apitoong.com:4000/user/register
+endpoint : /user/register
 
 method :post
 
@@ -34,7 +36,7 @@ example response
 
 ======================================================== 2
 
-endpoint : http://tes.apitoong.com:4000/user/login
+endpoint : /user/login
 
 method :post
 
@@ -59,7 +61,7 @@ example response
 
 ======================================================== 3
 
-endpoint : http://tes.apitoong.com:4000/user/account-number
+endpoint : /user/account-number
 
 method : GET
 
@@ -89,7 +91,7 @@ example response
 
 ======================================================== 4
 
-endpoint : http://tes.apitoong.com:4000/user/identity-number/:identityNumber
+endpoint : /user/identity-number/:identityNumber
 
 method : GET
 
@@ -121,7 +123,7 @@ example response
 
 ======================================================== 5
 
-endpoint : http://tes.apitoong.com:4000/user/search?userName=abu
+endpoint : /user/search?userName=abu
 
 method : GET
 
@@ -151,7 +153,7 @@ example response
 
 ======================================================== 6
 
-endpoint : http://tes.apitoong.com:4000/user/all
+endpoint : /user/all
 
 method : GET
 
@@ -200,7 +202,7 @@ respon for where use redis for cache
 
 for admin
 
-endpoint :http://tes.apitoong.com:4000/user/delete/:id
+endpoint :/user/delete/:id
 
 method : delete
 
@@ -223,7 +225,7 @@ example response
 
 ======================================================== 8
 
-endpoint : http://tes.apitoong.com:4000/user/update
+endpoint : /user/update
 
 method :put
 
