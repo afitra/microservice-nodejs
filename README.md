@@ -255,3 +255,19 @@ example response
 "password": "$2a$08$0FZlOa8YjcsZB18lukYsxeGCt2btVv.UBjt05A62oYqHRXe5bTB6S"
 }
 }
+
+saya sedang ingin membeli kelas kelas di bawah ini jika ada yang berminat untuk patungan dengan saya silahkan chat atau telpon langsung 
+
+
+Kelas Online Full-Stack React Native Apps
+https://docs.google.com/document/d/1slybuuWkfQ0aEKDdig6mgX_u5IMawa1Xzl3GqjfmTyU/mobilebasic
+
+Kelas Online Laravel Kotlin (Food Market)
+https://docs.google.com/document/d/1o53kBZ5ZexU9Xj_U89UAk3MgRzkyU_cgSnvN0i6uzT4/mobilebasic
+
+Kelas Online Full-Stack Laravel React Native (Food Market)
+https://docs.google.com/document/u/0/d/1XN0P7JGqmIHZAmXS-j99rCUNgYXRuZrocWB-4ws8GgY/mobilebasic
+
+Kelas Online Cara Mendapatkan Pekerjaan Impian Kita
+https://docs.google.com/document/u/0/d/1EV-AA8xZDbysB9qVqi4ajTTA6HmiCvBp5GlmOjZ9sqQ/mobilebasic
+
